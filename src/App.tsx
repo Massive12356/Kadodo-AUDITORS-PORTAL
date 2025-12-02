@@ -7,7 +7,8 @@ import DashboardScreen from "./screens/DashboardScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import HomeScreen from "./screens/HomeScreen";
-import SignatureScreen from "./screens/SignatureScreen"; // Added SignatureScreen import
+import SignatureScreen from "./screens/SignatureScreen";
+import ForgotPasswordScreen from "./screens/ForgotPasswordScreen"; // Added ForgotPasswordScreen import
 
 function App() {
   const isAuthenticated = useStore((state) => state.isAuthenticated);
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/login" element={<LoginScreen />} />
+        <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
         <Route path="/signup" element={<SignupScreen />} />
         <Route
           path="/dashboard"

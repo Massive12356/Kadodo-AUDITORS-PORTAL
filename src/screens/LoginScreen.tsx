@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import { toast } from 'react-hot-toast';
-import { Home } from 'lucide-react';
+import { Home, Eye, EyeOff } from 'lucide-react'; // Added Eye icons
 import Header from '../components/Header';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // Added state for password visibility
   const navigate = useNavigate();
   const setIsAuthenticated = useStore((state) => state.setIsAuthenticated);
 
@@ -64,15 +65,28 @@ export default function LoginScreen() {
                 <label htmlFor="password" className="block text-sm font-medium text-gray-900 mb-2">
                   Password
                 </label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                  required
-                />
+                <div className="relative">
+                  <input
+                    id="password"
+                    type={showPassword ? "text" : "password"} // Changed to conditional type
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5 text-gray-500" />
+                    ) : (
+                      <Eye className="h-5 w-5 text-gray-500" />
+                    )}
+                  </button>
+                </div>
               </div>
 
               <div className="flex items-center justify-between">
@@ -89,9 +103,9 @@ export default function LoginScreen() {
                 </div>
 
                 <div className="text-sm">
-                  <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                  <Link to="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
                     Forgot your password?
-                  </a>
+                  </Link>
                 </div>
               </div>
 

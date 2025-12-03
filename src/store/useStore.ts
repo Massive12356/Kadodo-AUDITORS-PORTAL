@@ -28,6 +28,15 @@ export interface ConsentData {
   auditorSignature?: string; // Added auditor signature field
 }
 
+// Added UserProfile interface
+export interface UserProfile {
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  company: string;
+}
+
 interface AppState {
   currentScreen: 'verification' | 'verification-results' | 'consent-form' | 'consent-letter' | 'dashboard';
   auditor: Auditor | null;
@@ -36,6 +45,7 @@ interface AppState {
   showVerificationModal: boolean;
   isAuthenticated: boolean;
   auditorSignature?: string; // Added auditor signature to state
+  userProfile: UserProfile | null; // Added userProfile to state
   setCurrentScreen: (screen: AppState['currentScreen']) => void;
   setAuditor: (auditor: Auditor | null) => void;
   setConsentData: (data: ConsentData | null) => void;
@@ -46,6 +56,7 @@ interface AppState {
   updateAppointmentStatus: (id: string, status: 'Active' | 'Pending' | 'Expired') => void; // Added function to update appointment status
   getAppointmentByConsentCode: (consentCode: string) => Appointment | undefined; // Added function to get appointment by consent code
   setAuditorSignature: (signature: string) => void; // Added function to set auditor signature
+  updateUserProfile: (profile: UserProfile) => void; // Added function to update user profile
 }
 
 // Updated mock appointments with consent codes
@@ -115,7 +126,7 @@ const mockAuditors: { [key: string]: Auditor } = {
 };
 
 // Better sample signature data URL (base64 encoded) - a clear signature image
-const sampleSignature = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNIDEwIDUwIFEgNTAgMTAsIDkwIDUwIFQgMTcwIDUwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9ImJsYWNrIj5TYW1wbGUgU2lnbmF0dXJlPC90ZXh0Pgo8L3N2Zz4K";
+const sampleSignature = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNIDEwIDUwIFEgNTAgMTAgOTAgNTAgUSAxMzAgMTAgMTcwIDUwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9ImJsYWNrIj5TYW1wbGUgU2lnbmF0dXJlPC90ZXh0Pgo8L3N2Zz4K";
 
 export const useStore = create<AppState>((set, get) => ({
   currentScreen: 'verification',
@@ -130,6 +141,13 @@ export const useStore = create<AppState>((set, get) => ({
   showVerificationModal: false,
   isAuthenticated: false,
   auditorSignature: localStorage.getItem('auditorSignature') || sampleSignature, // Load signature from localStorage or use sample
+  userProfile: {
+    fullName: 'John Doe',
+    email: 'john.doe@example.com',
+    phone: '+1 (555) 123-4567',
+    address: '123 Main Street, Accra, Ghana',
+    company: 'Doe & Associates'
+  }, // Added default user profile
 
   setCurrentScreen: (screen) => set({ currentScreen: screen }),
 
@@ -147,6 +165,9 @@ export const useStore = create<AppState>((set, get) => ({
     localStorage.setItem('auditorSignature', signature);
     set({ auditorSignature: signature });
   },
+
+  // Added function to update user profile
+  updateUserProfile: (profile) => set({ userProfile: profile }),
 
   // Updated verifyAuditor function to include consentCode
   verifyAuditor: (licenseNumber: string, consentCode?: string) => {

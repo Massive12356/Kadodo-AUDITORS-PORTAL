@@ -11,6 +11,9 @@ import SignatureScreen from "./screens/SignatureScreen";
 import ForgotPasswordScreen from "./screens/ForgotPasswordScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import AccountSettingsScreen from "./screens/AccountSettingsScreen"; // Added AccountSettingsScreen import
+import LicenseRenewalNotificationScreen from "./screens/LicenseRenewalNotificationScreen"; // Added LicenseRenewalNotificationScreen import
+import AuditorRotationNoticeScreen from "./screens/AuditorRotationNoticeScreen"; // Added AuditorRotationNoticeScreen import
+import LicenseLapseAlertScreen from "./screens/LicenseLapseAlertScreen"; // Added LicenseLapseAlertScreen import
 
 function App() {
   const isAuthenticated = useStore((state) => state.isAuthenticated);
@@ -73,6 +76,30 @@ function App() {
           element={
             <ProtectedRoute>
               <SignatureScreen />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/license-renewal"
+          element={
+            <ProtectedRoute>
+              <LicenseRenewalNotificationScreen />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/auditor-rotation"
+          element={
+            <ProtectedRoute>
+              <AuditorRotationNoticeScreen />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/license-lapse"
+          element={
+            <ProtectedRoute>
+              <LicenseLapseAlertScreen />
             </ProtectedRoute>
           }
         />

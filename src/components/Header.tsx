@@ -36,6 +36,15 @@ const Header = () => {
               <Link to="/dashboard">
                 <button className="text-gray-900 font-medium">Dashboard</button>
               </Link>
+              <Link to="/license-renewal">
+                <button className="text-gray-900 font-medium">License Renewal</button>
+              </Link>
+              <Link to="/auditor-rotation">
+                <button className="text-gray-900 font-medium">Auditor Rotation</button>
+              </Link>
+              <Link to="/license-lapse">
+                <button className="text-gray-900 font-medium">License Lapse</button>
+              </Link>
 
               <Link to="/signature">
                 <button className="text-gray-900 font-medium flex items-center gap-2">
@@ -189,6 +198,27 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Dashboard
+                </Link>
+                <Link
+                  to="/license-renewal"
+                  className="text-gray-900 font-medium block px-3 py-2 rounded-md"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  License Renewal
+                </Link>
+                <Link
+                  to="/auditor-rotation"
+                  className="text-gray-900 font-medium block px-3 py-2 rounded-md"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Auditor Rotation
+                </Link>
+                <Link
+                  to="/license-lapse"
+                  className="text-gray-900 font-medium block px-3 py-2 rounded-md"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  License Lapse
                 </Link>
                 <Link
                   to="/signature"

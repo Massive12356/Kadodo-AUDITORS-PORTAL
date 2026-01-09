@@ -26,6 +26,18 @@ export default function HomeScreen() {
               >
                 Auditor Login
               </Link>
+              <Link
+                to="/company-login"
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Company Login
+              </Link>
+              <Link
+                to="/icag-login"
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                ICAG Login
+              </Link>
             </div>
             
             <div className="md:hidden flex items-center">
@@ -76,6 +88,20 @@ export default function HomeScreen() {
                   >
                     Auditor Login
                   </Link>
+                  <Link
+                    to="/company-login"
+                    className="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Company Login
+                  </Link>
+                  <Link
+                    to="/icag-login"
+                    className="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    ICAG Login
+                  </Link>
                 </div>
               </div>
             </div>
@@ -92,13 +118,27 @@ export default function HomeScreen() {
             <p className="mt-6 max-w-lg mx-auto text-2xl text-gray-500">
               Professional auditing services for a compliant business environment.
             </p>
-            <div className="mt-10">
+            <div className="mt-10 space-y-4">
               <Link
                 to="/login"
                 className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
               >
                 <Building2 className="mr-2 h-5 w-5" />
                 Access Auditor Portal
+              </Link>
+              <Link
+                to="/company-login"
+                className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700"
+              >
+                <Building2 className="mr-2 h-5 w-5" />
+                Access Company Portal
+              </Link>
+              <Link
+                to="/icag-login"
+                className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700"
+              >
+                <Building2 className="mr-2 h-5 w-5" />
+                Access ICAG Portal
               </Link>
             </div>
           </div>

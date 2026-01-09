@@ -4,8 +4,12 @@ import Header from '../components/Header';
 const LicenseRenewalNotificationScreen = () => {
   return (
     <div className="min-h-screen bg-[#f4f5f7]">
-      <Header />
-      <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6">
+      <main className="max-w-4xl mx-auto py-12 px-4 sm:px-6">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">License Renewal</h1>
+          <p className="text-gray-600">Manage your license renewal process and stay compliant with ICAG requirements.</p>
+        </div>
+        
         {/* Main Card Container */}
         <div className="bg-white rounded-lg shadow-sm p-8 mb-6">
           {/* Main Title */}
@@ -90,7 +94,7 @@ const LicenseRenewalNotificationScreen = () => {
             <p className="text-gray-700">ORC & ICAG</p>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

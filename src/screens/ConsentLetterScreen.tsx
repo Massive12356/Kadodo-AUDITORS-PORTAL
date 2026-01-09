@@ -1,5 +1,5 @@
 import { useStore } from '../store/useStore';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import Header from '../components/Header';
 import jsPDF from 'jspdf';
@@ -7,11 +7,38 @@ import html2canvas from 'html2canvas';
 import { Printer, Download } from 'lucide-react';
 
 export default function ConsentLetterScreen() {
+  const { consentCode } = useParams<{ consentCode: string }>();
   const consentData = useStore((state) => state.consentData);
+  const getAppointmentByConsentCode = useStore((state) => state.getAppointmentByConsentCode);
   const auditorSignature = useStore((state) => state.auditorSignature);
+  
+  // If a consent code is provided in the URL, try to get the appointment data
+  let displayConsentData = consentData;
+  if (consentCode) {
+    const appointment = getAppointmentByConsentCode(consentCode);
+    if (appointment) {
+      // Create a temporary consent data object from the appointment
+      // For now, we'll use default values since we don't have specific auditor data stored with appointments
+      displayConsentData = {
+        companyName: appointment.companyName,
+        companyEmail: `${appointment.companyName.toLowerCase().replace(/\s+/g, '')}@example.com`,
+        auditorFullName: 'John Doe', // This should come from the actual auditor data
+        firmName: 'Doe & Associates',
+        licenseNumber: 'ICAG/2023/1234',
+        dateOfConsent: appointment.appointmentDate,
+        consentCode: appointment.consentCode,
+        auditorSignature: auditorSignature
+      };
+    }
+  }
+  
+  // If we still don't have consent data, try to get it from the store
+  if (!displayConsentData) {
+    displayConsentData = consentData;
+  }
 
   // Show a message if no consent data is available
-  if (!consentData) {
+  if (!displayConsentData) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -185,7 +212,7 @@ export default function ConsentLetterScreen() {
       });
       
       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-      pdf.save(`Auditor_Consent_Letter_${consentData.companyName}.pdf`);
+      pdf.save(`Auditor_Consent_Letter_${displayConsentData.companyName}.pdf`);
       
       toast.success('PDF downloaded successfully!');
     } catch (error) {
@@ -196,15 +223,13 @@ export default function ConsentLetterScreen() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <Header />
-
       <main className="max-w-5xl mx-auto px-6 py-8">
         <div className="mb-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
-            Auditor's Consent Letter
-          </h2>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Digital Consent Letter
+          </h1>
           <p className="text-gray-600">
-            Please review the letter before printing or downloading.
+            Review, print, or download auditor consent letters for company appointments.
           </p>
         </div>
 
@@ -243,11 +268,11 @@ export default function ConsentLetterScreen() {
               <p>
                 This letter serves as formal confirmation that I,{" "}
                 <span className="font-bold text-gray-900">
-                  {consentData?.auditorFullName ?? "N/A"}
+                  {displayConsentData?.auditorFullName ?? "N/A"}
                 </span>{" "}
-                (ICAG Registration Number:{" "}
+                (ICAG Registration Number: {" "}
                 <span className="font-bold text-gray-900">
-                  {consentData.licenseNumber}
+                  {displayConsentData.licenseNumber}
                 </span>
                 ), being a qualified auditor in accordance with the regulations
                 of the Institute of Chartered Accountants, Ghana (ICAG), hereby
@@ -256,12 +281,12 @@ export default function ConsentLetterScreen() {
 
               <div className="text-center my-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-1">
-                  {consentData.companyName}
+                  {displayConsentData.companyName}
                 </h2>
                 <p className="text-gray-600">
-                  (Company Email Number:{" "}
+                  (Company Email Number: {" "}
                   <span className="text-black font-medium">
-                    {consentData.companyEmail}
+                    {displayConsentData.companyEmail}
                   </span>
                   )
                 </p>
@@ -285,7 +310,7 @@ export default function ConsentLetterScreen() {
                   UNIQUE CONSENT CODE
                 </p>
                 <p className="text-2xl font-bold text-gray-900 tracking-wider">
-                  {consentData.consentCode}
+                  {displayConsentData.consentCode}
                 </p>
               </div>
 
@@ -300,10 +325,10 @@ export default function ConsentLetterScreen() {
               <p>Sincerely,</p>
               {/* Display signature if available */}
               <div className="">
-                {auditorSignature ? (
+                {displayConsentData.auditorSignature ? (
                   <>
                     <img
-                      src={auditorSignature}
+                      src={displayConsentData.auditorSignature}
                       alt="Auditor's Signature"
                       className="max-w-xs max-h-20 w-auto h-auto object-contain mb-2"
                     />
@@ -322,7 +347,7 @@ export default function ConsentLetterScreen() {
                 )}
               </div>
               <p className="font-bold text-gray-900">
-                {consentData.auditorFullName}
+                {displayConsentData.auditorFullName}
               </p>
               <p className="text-gray-600">Chartered Accountant (ICAG)</p>
             </div>

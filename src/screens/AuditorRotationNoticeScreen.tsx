@@ -4,8 +4,12 @@ import Header from '../components/Header';
 const AuditorRotationNoticeScreen = () => {
   return (
     <div className="min-h-screen bg-[#f5f6f8]">
-      <Header />
-      <div className="max-w-3xl mx-auto py-8 px-4 sm:px-6">
+      <main className="max-w-3xl mx-auto py-8 px-4 sm:px-6">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Auditor Rotation</h1>
+          <p className="text-gray-600">Manage mandatory auditor rotation requirements and ensure compliance with regulations.</p>
+        </div>
+        
         {/* Top Header Bar */}
         <div className="bg-white rounded-t-lg shadow-sm">
           <div className="flex justify-between items-center p-4">
@@ -138,7 +142,7 @@ const AuditorRotationNoticeScreen = () => {
             </p>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

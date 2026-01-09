@@ -31,8 +31,6 @@ export default function ConsentFormScreen() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-
       <main className="max-w-3xl mx-auto px-6 py-16">
         <div className="mb-8">
           <h2 className="text-4xl font-bold text-gray-900 mb-3">

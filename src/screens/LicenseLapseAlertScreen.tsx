@@ -3,9 +3,13 @@ import Header from '../components/Header';
 
 const LicenseLapseAlertScreen = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6">
+    <div className="min-h-screen bg-[#f5f6f8]">
+      <main className="max-w-2xl mx-auto py-8 px-4 sm:px-6">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">License Lapse</h1>
+          <p className="text-gray-600">Monitor and address lapsed licenses to maintain compliance status.</p>
+        </div>
+        
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Alert Header Bar */}
           <div className="bg-gradient-to-r from-red-50 to-red-100 border-b-2 border-red-200 p-5 flex items-center">
@@ -113,7 +117,7 @@ const LicenseLapseAlertScreen = () => {
             </button>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

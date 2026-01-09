@@ -39,6 +39,7 @@ export interface UserProfile {
 
 interface AppState {
   currentScreen: 'verification' | 'verification-results' | 'consent-form' | 'consent-letter' | 'dashboard';
+  userType: 'auditor' | 'company' | 'icag' | null;
   auditor: Auditor | null;
   appointments: Appointment[];
   consentData: ConsentData | null;
@@ -47,6 +48,7 @@ interface AppState {
   auditorSignature?: string; // Added auditor signature to state
   userProfile: UserProfile | null; // Added userProfile to state
   setCurrentScreen: (screen: AppState['currentScreen']) => void;
+  setUserType: (userType: AppState['userType']) => void;
   setAuditor: (auditor: Auditor | null) => void;
   setConsentData: (data: ConsentData | null) => void;
   setShowVerificationModal: (show: boolean) => void;
@@ -130,6 +132,7 @@ const sampleSignature = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlna
 
 export const useStore = create<AppState>((set, get) => ({
   currentScreen: 'verification',
+  userType: null,
   auditor: {
     fullName: 'John Doe',
     licenseNumber: 'ICAG/2023/1234',
@@ -142,14 +145,16 @@ export const useStore = create<AppState>((set, get) => ({
   isAuthenticated: false,
   auditorSignature: localStorage.getItem('auditorSignature') || sampleSignature, // Load signature from localStorage or use sample
   userProfile: {
-    fullName: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '+1 (555) 123-4567',
+    fullName: 'Mintah Jr',
+    email: 'auditor@example.com',
+    phone: '020-123-4567',
     address: '123 Main Street, Accra, Ghana',
     company: 'Doe & Associates'
   }, // Added default user profile
 
   setCurrentScreen: (screen) => set({ currentScreen: screen }),
+
+  setUserType: (userType) => set({ userType }),
 
   setAuditor: (auditor) => set({ auditor }),
 

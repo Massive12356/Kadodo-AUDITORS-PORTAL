@@ -1,14 +1,40 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Building, Home, Plus, ChevronDown, FileSignature, Menu, X, User } from "lucide-react";
 import toast from 'react-hot-toast';
 import { useStore } from '../store/useStore';
 
 const Header = () => {
+  const navigate = useNavigate();
   const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false); // Added state for profile dropdown
   const userProfile = useStore((state) => state.userProfile); // Get user profile from store
+  const setIsAuthenticated = useStore((state) => state.setIsAuthenticated); // Get setIsAuthenticated function from store
+  
+  const profileDropdownRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target as Node)) {
+        setShowProfileDropdown(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    // Clear authentication status
+    setIsAuthenticated(false);
+    // Show confirmation
+    toast.success('You have been logged out');
+    // Navigate to home page
+    navigate('/');
+  };
   const handleAddConsent = () => {
     toast.success("Redirecting to consent form...");
     setShowCompanyDropdown(false);
@@ -55,8 +81,12 @@ const Header = () => {
             </nav>
             <div className="relative">
               <button
-                onClick={() => setShowCompanyDropdown(!showCompanyDropdown)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowCompanyDropdown(!showCompanyDropdown);
+                }}
                 className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                type="button"
               >
                 <Plus className="w-4 h-4" />
                 Companies
@@ -64,16 +94,23 @@ const Header = () => {
               </button>
 
               {showCompanyDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-10">
+                <div 
+                  className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-10"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <Link
                     to="/consent-form"
-                    onClick={handleAddConsent}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAddConsent();
+                    }}
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     Add Consent
                   </Link>
                   <a
                     href="#"
+                    onClick={(e) => e.stopPropagation()}
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     View All Companies
@@ -81,13 +118,21 @@ const Header = () => {
                 </div>
               )}
             </div>
-            {/* Profile dropdown with hover effect */}
+            {/* Profile dropdown */}
             <div className="relative">
               <button
-                onMouseEnter={() => setShowProfileDropdown(true)}
-                onMouseLeave={() => setShowProfileDropdown(false)}
-                onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-                className="flex items-center gap-2 focus:outline-none"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  console.log('Profile dropdown clicked, current state:', showProfileDropdown);
+                  setShowProfileDropdown(!showProfileDropdown);
+                  console.log('New state:', !showProfileDropdown);
+                }}
+                onMouseDown={(e) => console.log('Mouse down on profile button')}
+                onMouseUp={(e) => console.log('Mouse up on profile button')}
+                onTouchStart={(e) => console.log('Touch start on profile button')}
+                className="flex items-center gap-2 focus:outline-none p-1 rounded-full hover:bg-gray-100 transition-colors border-2 border-red-500"
+                type="button"
+                aria-label="Profile menu"
               >
                 <div className="w-9 h-9 bg-gray-200 rounded-full overflow-hidden ring-2 ring-transparent hover:ring-blue-500 transition-all">
                   <img
@@ -101,9 +146,8 @@ const Header = () => {
 
               {showProfileDropdown && (
                 <div 
-                  className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-10"
-                  onMouseEnter={() => setShowProfileDropdown(true)}
-                  onMouseLeave={() => setShowProfileDropdown(false)}
+                  ref={profileDropdownRef}
+                  className="absolute right-0 mt-10 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-1 z-50"
                 >
                   <div className="px-4 py-3 border-b border-gray-100">
                     <p className="text-sm font-medium text-gray-900 truncate">
@@ -131,15 +175,15 @@ const Header = () => {
                     Account Settings
                   </Link>
                   <div className="border-t border-gray-100 my-1"></div>
-                  <Link
-                    to="/"
-                    className="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center"
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center"
                   >
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
                     Logout
-                  </Link>
+                  </button>
                 </div>
               )}
             </div>
@@ -261,13 +305,15 @@ const Header = () => {
                 >
                   Account Settings
                 </Link>
-                <Link
-                  to="/"
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsMenuOpen(false);
+                  }}
                   className="text-red-600 font-medium block px-3 py-2 rounded-md"
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   Logout
-                </Link>
+                </button>
               </div>
             </div>
           </div>

@@ -23,6 +23,7 @@ import AuditorSearchScreen from "./screens/AuditorSearchScreen";
 import AuditorProfileScreen from "./screens/AuditorProfileScreen";
 import RequestAuditorEngagementScreen from "./screens/RequestAuditorEngagementScreen";
 import AuditorManagementScreen from "./screens/AuditorManagementScreen";
+import VerifyConsentLetterScreen from "./screens/VerifyConsentLetterScreen";
 import Layout from "./components/Layout";
 import CompanyLayout from "./components/CompanyLayout";
 import IcagLayout from "./components/IcagLayout";
@@ -73,6 +74,7 @@ function App() {
         <Route path="/auditor-profile/:id" element={<CompanyProtectedRoute><CompanyLayout><AuditorProfileScreen /></CompanyLayout></CompanyProtectedRoute>} />
         <Route path="/request-engagement/:id" element={<CompanyProtectedRoute><CompanyLayout><RequestAuditorEngagementScreen /></CompanyLayout></CompanyProtectedRoute>} />
         <Route path="/auditor-management" element={<CompanyProtectedRoute><CompanyLayout><AuditorManagementScreen /></CompanyLayout></CompanyProtectedRoute>} />
+        <Route path="/verify" element={<VerifyConsentLetterScreen />} />
         
         {/* ICAG Portal Routes */}
         <Route path="/icag-login" element={<IcagLoginScreen />} />

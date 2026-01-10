@@ -116,6 +116,47 @@ export default function AuditorSearchScreen() {
     }
   };
 
+  // Filter auditors based on search and filter criteria
+  const filteredAuditors = auditors.filter(auditor => {
+    // Search query filter (name, firm, or registration number)
+    const matchesSearch = 
+      searchQuery === '' ||
+      auditor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      auditor.firm.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    // Region filter
+    const matchesRegion = 
+      region === 'All Regions' || 
+      auditor.location.includes(region);
+    
+    // Specialization filter
+    const matchesSpecialization = 
+      specializations.length === 0 || 
+      specializations.some(spec => auditor.specializations.includes(spec));
+    
+    // Rating filter
+    const matchesRating = auditor.rating >= minRating;
+    
+    // Available now filter (simplified - in a real app, this would check actual availability)
+    const matchesAvailability = true; // All auditors are considered available
+    
+    return matchesSearch && matchesRegion && matchesSpecialization && matchesRating && matchesAvailability;
+  });
+
+  // Sort auditors based on selected sort option
+  const sortedAuditors = [...filteredAuditors].sort((a, b) => {
+    switch (sortBy) {
+      case 'Rating':
+        return b.rating - a.rating;
+      case 'Experience':
+        return b.experience - a.experience;
+      case 'Name':
+        return a.name.localeCompare(b.name);
+      default:
+        return 0; // Default is relevance (no sorting)
+    }
+  });
+
   const totalPages = 5; // Mock total pages for pagination
 
   const handlePageChange = (page: number) => {
@@ -254,7 +295,7 @@ export default function AuditorSearchScreen() {
           <div className="lg:col-span-3">
             {/* Results Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-              <h2 className="text-lg font-medium text-gray-900 mb-2 sm:mb-0">Showing {auditors.length} verified auditors</h2>
+              <h2 className="text-lg font-medium text-gray-900 mb-2 sm:mb-0">Showing {sortedAuditors.length} verified auditors</h2>
               <div className="flex items-center">
                 <label className="text-sm font-medium text-gray-700 mr-2">Sort by:</label>
                 <select
@@ -272,76 +313,94 @@ export default function AuditorSearchScreen() {
 
             {/* Auditor Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {auditors.map(auditor => (
-                <div key={auditor.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                  {/* Top Section */}
-                  <div className="p-6">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0">
-                        <img 
-                          src={auditor.profilePhoto} 
-                          alt={auditor.name} 
-                          className="w-16 h-16 rounded-full object-cover border-2 border-gray-200"
-                        />
-                      </div>
-                      <div className="flex items-center justify-between ml-3 w-full">
-                          <div>
-                            <h3 className="text-lg font-bold text-gray-900">{auditor.name}</h3>
-                            <p className="text-gray-500 text-sm font-semibold">{auditor.firm}</p>
-                          </div>
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                            <BadgeCheck className="h-4 w-4 text-white mr-1 fill-green-700" />
-                            {auditor.status}
-                          </span>
+              {sortedAuditors.length > 0 ? (
+                sortedAuditors.map(auditor => (
+                  <div key={auditor.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                    {/* Top Section */}
+                    <div className="p-6">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0">
+                          <img 
+                            src={auditor.profilePhoto} 
+                            alt={auditor.name} 
+                            className="w-16 h-16 rounded-full object-cover border-2 border-gray-200"
+                          />
                         </div>
-                    </div>
-                    
-                    <div className="ml-4 flex-1">
-                        {/* Details Row */}
-                        <div className="flex flex-col space-y-1 text-sm text-gray-500 mt-2">
-                          <div className="flex items-center">
-                            <MapPin className="h-4 w-4 mr-2 text-gray-400 fill-gray-400" />
-                            <span className="text-gray-500 text-sm font-semibold">{auditor.location}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Briefcase className="h-4 w-4 mr-2 text-gray-400 fill-gray-400" />
-                            <span className="text-gray-500 text-sm font-semibold">{auditor.experience} years of Experience</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Star className="h-4 w-4 mr-2 text-gray-400 fill-gray-400" />
-                            <span> <span className='font-bold text-black mr-1'>{auditor.rating}</span>({auditor.reviewCount} Reviews)</span>
-                          </div>
-                          <div className="flex items-center">
-                            <span className="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-0.5 rounded">
-                              Cat: {auditor.categorization}
+                        <div className="flex items-center justify-between ml-3 w-full">
+                            <div>
+                              <h3 className="text-lg font-bold text-gray-900">{auditor.name}</h3>
+                              <p className="text-gray-500 text-sm font-semibold">{auditor.firm}</p>
+                            </div>
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                              <BadgeCheck className="h-4 w-4 text-white mr-1 fill-green-700" />
+                              {auditor.status}
                             </span>
                           </div>
-                        </div>
                       </div>
-                    {/* Specialization Tags */}
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {auditor.specializations.map((spec, index) => (
-                        <span 
-                          key={index} 
-                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
-                        >
-                          {spec}
-                        </span>
-                      ))}
+                      
+                      <div className="ml-4 flex-1">
+                          {/* Details Row */}
+                          <div className="flex flex-col space-y-1 text-sm text-gray-500 mt-2">
+                            <div className="flex items-center">
+                              <MapPin className="h-4 w-4 mr-2 text-gray-400 fill-gray-400" />
+                              <span className="text-gray-500 text-sm font-semibold">{auditor.location}</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Briefcase className="h-4 w-4 mr-2 text-gray-400 fill-gray-400" />
+                              <span className="text-gray-500 text-sm font-semibold">{auditor.experience} years of Experience</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Star className="h-4 w-4 mr-2 text-gray-400 fill-gray-400" />
+                              <span> <span className='font-bold text-black mr-1'>{auditor.rating}</span>({auditor.reviewCount} Reviews)</span>
+                            </div>
+                            <div className="flex items-center">
+                              <span className="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-0.5 rounded">
+                                Cat: {auditor.categorization}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      {/* Specialization Tags */}
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {auditor.specializations.map((spec, index) => (
+                          <span 
+                            key={index} 
+                            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                          >
+                            {spec}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Action Buttons */}
+                    <div className="bg-gray-50 px-6 py-4 flex justify-between">
+                      <Link to={`/auditor-profile/${auditor.id}`} className="text-blue-600 hover:text-blue-800 font-medium text-sm">
+                        View Profile
+                      </Link>
+                      <Link to={`/request-engagement/${auditor.id}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors inline-block">
+                        Request Engagement
+                      </Link>
                     </div>
                   </div>
-                  
-                  {/* Action Buttons */}
-                  <div className="bg-gray-50 px-6 py-4 flex justify-between">
-                    <Link to={`/auditor-profile/${auditor.id}`} className="text-blue-600 hover:text-blue-800 font-medium text-sm">
-                      View Profile
-                    </Link>
-                    <Link to={`/request-engagement/${auditor.id}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors inline-block">
-                      Request Engagement
-                    </Link>
-                  </div>
+                ))
+              ) : (
+                <div className="col-span-full text-center py-12">
+                  <p className="text-gray-500 text-lg">No auditors found matching your criteria.</p>
+                  <button 
+                    onClick={() => {
+                      setSearchQuery('');
+                      setRegion('All Regions');
+                      setSpecializations([]);
+                      setMinRating(0);
+                      setAvailableNow(false);
+                    }}
+                    className="mt-4 text-blue-600 hover:text-blue-800 font-medium"
+                  >
+                    Clear all filters
+                  </button>
                 </div>
-              ))}
+              )}
             </div>
 
             {/* Pagination */}

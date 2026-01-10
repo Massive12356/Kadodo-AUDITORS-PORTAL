@@ -31,56 +31,13 @@ import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
 import img4 from "../assets/img4.jpg";
 import img5 from "../assets/img5.png";
+import HomeHeader from "../components/HomeHeader";
 
 export default function HomeScreen() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-16">
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-2">
-                  <Globe className="h-4 w-4 text-white" />
-                </div>
-                <span className="text-xl font-bold text-gray-900">
-                  Ghana ORC & ICAG
-                </span>
-              </div>
-            </div>
-
-            <div className="hidden md:flex items-center space-x-8">
-              <Link
-                to="/"
-                className="text-gray-700 hover:text-blue-600 font-medium"
-              >
-                Home
-              </Link>
-              <Link
-                to="/verify"
-                className="text-gray-700 hover:text-blue-600 font-medium"
-              >
-                Verify
-              </Link>
-              <Link
-                to="/help-center"
-                className="text-gray-700 hover:text-blue-600 font-medium"
-              >
-                Help Center
-              </Link>
-
-              <Link
-                to="/login"
-                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors font-medium"
-              >
-                Auditor Login
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+      <HomeHeader />
       {/* Hero Section (Two-Column Layout) */}
       <div className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

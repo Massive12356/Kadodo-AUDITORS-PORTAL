@@ -24,6 +24,8 @@ import AuditorProfileScreen from "./screens/AuditorProfileScreen";
 import RequestAuditorEngagementScreen from "./screens/RequestAuditorEngagementScreen";
 import AuditorManagementScreen from "./screens/AuditorManagementScreen";
 import VerifyConsentLetterScreen from "./screens/VerifyConsentLetterScreen";
+import HelpCenterScreen from './screens/HelpCenterScreen';
+import ReviewAuditorScreen from './screens/ReviewAuditorScreen';
 import Layout from "./components/Layout";
 import CompanyLayout from "./components/CompanyLayout";
 import IcagLayout from "./components/IcagLayout";
@@ -74,7 +76,9 @@ function App() {
         <Route path="/auditor-profile/:id" element={<CompanyProtectedRoute><CompanyLayout><AuditorProfileScreen /></CompanyLayout></CompanyProtectedRoute>} />
         <Route path="/request-engagement/:id" element={<CompanyProtectedRoute><CompanyLayout><RequestAuditorEngagementScreen /></CompanyLayout></CompanyProtectedRoute>} />
         <Route path="/auditor-management" element={<CompanyProtectedRoute><CompanyLayout><AuditorManagementScreen /></CompanyLayout></CompanyProtectedRoute>} />
+        <Route path="/review-auditor/:id" element={<CompanyProtectedRoute><CompanyLayout><ReviewAuditorScreen /></CompanyLayout></CompanyProtectedRoute>} />
         <Route path="/verify" element={<VerifyConsentLetterScreen />} />
+        <Route path="/help-center" element={<HelpCenterScreen />} />
         
         {/* ICAG Portal Routes */}
         <Route path="/icag-login" element={<IcagLoginScreen />} />

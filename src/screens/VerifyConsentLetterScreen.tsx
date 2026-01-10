@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { KeyRound, Search, Lock, Eye, EyeOff, CheckCircle, AlertCircle, XCircle, Clock, FileText, Building2, User, Shield } from 'lucide-react';
 import { useStore } from '../store/useStore';
+import HomeHeader from '../components/HomeHeader';
 
 export default function VerifyConsentLetterScreen() {
   const [consentCode, setConsentCode] = useState('');
@@ -80,8 +81,9 @@ export default function VerifyConsentLetterScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gray-50 pt-16">
+      <HomeHeader />
+      <div className="max-w-4xl mx-auto mt-8">
         {/* Top Badge */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium">

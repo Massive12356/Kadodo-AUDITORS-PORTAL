@@ -1,6 +1,7 @@
 import React from 'react';
 import CompanySidebar from './CompanySidebar';
 import CompanyTopbar from './CompanyTopbar';
+import Breadcrumb from './Breadcrumb';
 
 interface CompanyLayoutProps {
   children: React.ReactNode;
@@ -12,9 +13,12 @@ const CompanyLayout: React.FC<CompanyLayoutProps> = ({ children }) => {
       <CompanySidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <CompanyTopbar />
-        <main className="flex-1 overflow-y-auto p-6">
-          {children}
-        </main>
+        <div className="flex-1 overflow-y-auto p-6">
+          <Breadcrumb />
+          <main>
+            {children}
+          </main>
+        </div>
       </div>
     </div>
   );

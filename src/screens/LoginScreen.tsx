@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import { toast } from 'react-hot-toast';
 import { Home, Eye, EyeOff } from 'lucide-react'; // Added Eye icons
+import HomeHeader from '../components/HomeHeader';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -33,16 +34,7 @@ export default function LoginScreen() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <nav className="w-full py-4 px-6">
-        <Link 
-          to="/" 
-          className="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-200 ease-in-out"
-        >
-          <Home className="w-5 h-5 mr-2" />
-          <span className="font-medium">Home</span>
-        </Link>
-      </nav>
-      
+      <HomeHeader />
       <div className="flex-grow flex items-center justify-center px-4">
         <div className="w-full max-w-md">
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">

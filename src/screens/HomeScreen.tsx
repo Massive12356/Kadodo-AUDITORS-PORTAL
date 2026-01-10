@@ -63,14 +63,14 @@ export default function HomeScreen() {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   to="/login"
-                  className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium flex items-center justify-center"
+                  className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium flex items-center justify-center hover:animate-pulse"
                 >
                   Auditor Portal
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
                   to="/company-login"
-                  className="border border-gray-300 text-black px-6 py-3 rounded-md hover:bg-gray-50 transition-colors font-medium flex items-center justify-center"
+                  className="border border-gray-300 text-black px-6 py-3 rounded-md hover:bg-gray-50 transition-colors font-medium flex items-center justify-center hover:animate-pulse"
                 >
                   Company Portal
                   <ArrowRight className="ml-2 h-5 w-5" />

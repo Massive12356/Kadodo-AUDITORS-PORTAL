@@ -10,6 +10,7 @@ export default function VerifyConsentLetterScreen() {
   const [showDetails, setShowDetails] = useState(false);
   const auditorSignature = useStore((state) => state.auditorSignature);
 
+
   // Mock consent letter data that would be displayed after verification
   const mockConsentLetter = {
     title: "AUDITOR APPOINTMENT CONSENT LETTER",
@@ -35,8 +36,8 @@ export default function VerifyConsentLetterScreen() {
       scope: "Annual statutory audit of financial statements"
     },
     status: "Verified",
-    issuer: "Ghana Office of the Registrar of Companies (ORC)",
-    verificationDate: "Today, 10:30 AM",
+    issuer: "Kwame Mensah, CA",
+    verificationDate: new Date().toLocaleString(),
     consentCode: "CNST-789456"
   };
 
@@ -86,7 +87,7 @@ export default function VerifyConsentLetterScreen() {
       <div className="max-w-4xl mx-auto mt-8">
         {/* Top Badge */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium animate-bounce">
             <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
             OFFICIAL VERIFICATION PORTAL
           </div>

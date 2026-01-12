@@ -120,7 +120,7 @@ export default function HomeScreen() {
                 <img
                   src={img1}
                   alt="Professional auditor working on laptop"
-                  className="w-64 sm:w-80 lg:w-[30rem] h-auto rounded-2xl object-cover"
+                  className="w-64 sm:w-80 lg:w-[25rem] h-auto rounded-2xl object-cover"
                 />
 
                 <div className="absolute bottom-2 left-8 bg-black/70 text-white rounded-lg p-4 max-w-xs">

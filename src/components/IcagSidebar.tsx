@@ -95,11 +95,11 @@ const IcagSidebar = () => {
           }`}
         >
           <Building className="w-5 h-5" />
-          Manage Companies
+          Companies Directory
         </Link>
 
         {/* Compliance Reports */}
-        <Link
+        {/* <Link
           to="/compliance-reports"
           className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium ${
             isActive('/compliance-reports')
@@ -109,10 +109,10 @@ const IcagSidebar = () => {
         >
           <FileText className="w-5 h-5" />
           Compliance Reports
-        </Link>
+        </Link> */}
 
         {/* Analytics */}
-        <Link
+        {/* <Link
           to="/analytics"
           className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium ${
             isActive('/analytics')
@@ -122,7 +122,7 @@ const IcagSidebar = () => {
         >
           <BarChart className="w-5 h-5" />
           Analytics
-        </Link>
+        </Link> */}
       </nav>
 
       {/* Bottom section for profile */}

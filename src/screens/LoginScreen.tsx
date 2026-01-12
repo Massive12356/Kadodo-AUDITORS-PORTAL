@@ -46,7 +46,7 @@ export default function LoginScreen() {
             <div className="mb-6">
               <button
                 onClick={handleGoogleLogin}
-                className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#820101] transition-colors"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24">
                   <path
@@ -90,7 +90,7 @@ export default function LoginScreen() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#820101] focus:border-transparent outline-none transition-all"
                   required
                 />
               </div>
@@ -106,7 +106,7 @@ export default function LoginScreen() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
-                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#820101] focus:border-transparent outline-none transition-all"
                     required
                   />
                   <button
@@ -129,7 +129,7 @@ export default function LoginScreen() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-[#820101] focus:ring-[#820101] border-gray-300 rounded"
                   />
                   <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                     Remember me
@@ -137,7 +137,7 @@ export default function LoginScreen() {
                 </div>
 
                 <div className="text-sm">
-                  <Link to="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
+                  <Link to="/forgot-password" className="font-medium text-[#820101] hover:text-[#6a0101]">
                     Forgot your password?
                   </Link>
                 </div>
@@ -145,7 +145,7 @@ export default function LoginScreen() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                className="w-full bg-[#820101] text-white px-4 py-3 rounded-lg font-medium hover:bg-[#6a0101] transition-colors"
               >
                 Sign in
               </button>
@@ -154,7 +154,7 @@ export default function LoginScreen() {
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Don't have an account?{' '}
-                <Link to="/signup" className="font-medium text-blue-600 hover:text-blue-500">
+                <Link to="/signup" className="font-medium text-[#820101] hover:text-[#6a0101]">
                   Sign up
                 </Link>
               </p>

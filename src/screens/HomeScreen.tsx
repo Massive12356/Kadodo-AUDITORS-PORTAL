@@ -26,7 +26,7 @@ import {
   Cloud,
   ArrowLeft
 } from "lucide-react";
-import img1 from "../assets/pic.jpeg";
+import img1 from "../assets/img6.png";
 import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
 import img4 from "../assets/img4.jpg";
@@ -63,7 +63,7 @@ export default function HomeScreen() {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   to="/login"
-                  className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium flex items-center justify-center hover:animate-pulse"
+                  className="bg-[#820101] text-white px-6 py-3 rounded-md hover:bg-[#6a0101] transition-colors font-medium flex items-center justify-center hover:animate-pulse"
                 >
                   Auditor Portal
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -150,8 +150,8 @@ export default function HomeScreen() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
-                <Users className="h-6 w-6 text-blue-600" />
+              <div className="w-12 h-12 bg-[#f8e6e6] rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
+                <Users className="h-6 w-6 text-[#820101]" />
               </div>
               <h3 className="text-lg font-bold text-black mb-2 text-center md:text-left">
                 Auditor Management
@@ -221,7 +221,7 @@ export default function HomeScreen() {
 
           <div className="relative flex flex-col md:flex-row items-center justify-between">
             <div className="flex flex-col items-center text-center mb-10 md:mb-0">
-              <div className="w-16 h-16 rounded-full border-4 border-white bg-blue-700 flex items-center justify-center mb-4 z-30">
+              <div className="w-16 h-16 rounded-full border-4 border-white bg-[#6a0101] flex items-center justify-center mb-4 z-30">
                 <UserSearch className=" text-white fill-white w-8 h-8" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -233,13 +233,13 @@ export default function HomeScreen() {
             </div>
 
             <div className=" absolute left-28 top-7  w-[80%] h-1 flex items-center justify-center z-0">
-              <div className="w-[50%] h-1 bg-blue-500"></div>
+              <div className="w-[50%] h-1 bg-[#820101]"></div>
               <div className="w-[50%] h-1 bg-gray-300"></div>
             </div>
 
             <div className="flex flex-col  items-center text-center mb-10 md:mb-0">
-              <div className="w-16 h-16 rounded-full bg-white border-2 border-blue-500 flex items-center justify-center mb-4 z-30">
-                <HandshakeIcon className=" text-blue-600 font-bold w-8 h-8" />
+              <div className="w-16 h-16 rounded-full bg-white border-2 border-[#820101] flex items-center justify-center mb-4 z-30">
+                <HandshakeIcon className=" text-[#820101] font-bold w-8 h-8" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 Auditor Acceptance
@@ -250,8 +250,8 @@ export default function HomeScreen() {
             </div>
 
             <div className="flex flex-col items-center text-center mb-10 md:mb-0">
-              <div className="w-16 h-16 rounded-full bg-white border-2 border-blue-500 flex items-center justify-center mb-4 z-30">
-                <NotebookPen className="text-blue-600 font-bold w-8 h-8" />
+              <div className="w-16 h-16 rounded-full bg-white border-2 border-[#820101] flex items-center justify-center mb-4 z-30">
+                <NotebookPen className="text-[#820101] font-bold w-8 h-8" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 Digital Consent
@@ -262,8 +262,8 @@ export default function HomeScreen() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-white border-2 border-blue-500 flex items-center justify-center mb-4 z-30">
-                <Cloud className="text-blue-600 font-bold w-8 h-8" />
+              <div className="w-16 h-16 rounded-full bg-white border-2 border-[#820101] flex items-center justify-center mb-4 z-30">
+                <Cloud className="text-[#820101] font-bold w-8 h-8" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 ORC Verification
@@ -293,7 +293,7 @@ export default function HomeScreen() {
               <ul className="space-y-4">
                 <li className="flex items-start flex-col">
                   <div className="flex items-center mb-1">
-                    <CheckCircle2 className="h-7 w-7 text-white fill-blue-800 mt-0.5 mr-3 flex-shrink-0" />
+                    <CheckCircle2 className="h-7 w-7 text-white fill-[#5a0101] mt-0.5 mr-3 flex-shrink-0" />
                     <h1 className=" block text-black font-bold">
                       Fraud-Proof Generation
                     </h1>
@@ -306,7 +306,7 @@ export default function HomeScreen() {
                 </li>
                 <li className="flex items-start flex-col">
                   <div className="flex items-center mb-1">
-                    <CheckCircle2 className="h-7 w-7 text-white fill-blue-800 mt-0.5 mr-3 flex-shrink-0" />
+                    <CheckCircle2 className="h-7 w-7 text-white fill-[#5a0101] mt-0.5 mr-3 flex-shrink-0" />
                     <h1 className="block text-black font-bold">
                       Real-time Standing Checks
                     </h1>
@@ -319,7 +319,7 @@ export default function HomeScreen() {
                 </li>
                 <li className="flex items-start flex-col">
                   <div className="flex items-center mb-1">
-                    <CheckCircle2 className="h-7 w-7 text-white fill-blue-800 mt-0.5 mr-3 flex-shrink-0" />
+                    <CheckCircle2 className="h-7 w-7 text-white fill-[#5a0101] mt-0.5 mr-3 flex-shrink-0" />
                     <h1 className="block text-black font-bold">
                       Centralized Repository
                     </h1>
@@ -334,7 +334,7 @@ export default function HomeScreen() {
               <div className="mt-8">
                 <Link
                   to="#"
-                  className="text-blue-600 hover:text-blue-800 font-bold flex items-center"
+                  className="text-[#820101] hover:text-[#5a0101] font-bold flex items-center"
                 >
                   Learn more about verification
                   <ArrowRight className="h-4 w-4 ml-2" />
@@ -356,19 +356,19 @@ export default function HomeScreen() {
       </div>
 
       {/* Call-To-Action Section */}
-      <div className="py-16 bg-blue-600 text-white">
+      <div className="py-16 bg-[#820101] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Access Your Dedicated Portal
           </h2>
-          <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-[#f8e6e6] mb-8 max-w-2xl mx-auto">
             Select your user type to manage engagements, verify <br /> auditors,
             or oversee compliance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/auditor-login"
-              className="bg-white text-blue-600 px-8 py-4 rounded-md font-semibold hover:bg-gray-100 hover:animate-pulse transition-colors"
+              to="/login"
+              className="bg-white text-[#820101] px-8 py-4 rounded-md font-semibold hover:bg-gray-100 hover:animate-pulse transition-colors"
             >
               Auditor Login
             </Link>
@@ -388,11 +388,11 @@ export default function HomeScreen() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-2">
+                <div className="w-8 h-8 bg-[#820101] rounded-full flex items-center justify-center mr-2">
                   <Globe className="h-4 w-4 text-white" />
                 </div>
                 <span className="text-xl font-bold text-gray-900">
-                  Ghana ORC & ICAG
+                  ICAG
                 </span>
               </div>
               <p className="text-gray-600 text-[15px]">
@@ -408,8 +408,8 @@ export default function HomeScreen() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    to="/auditor-login"
-                    className="text-gray-600 hover:text-blue-600 text-sm"
+                    to="/login"
+                    className="text-gray-600 hover:text-[#820101] text-sm"
                   >
                     Auditor Portal
                   </Link>
@@ -417,7 +417,7 @@ export default function HomeScreen() {
                 <li>
                   <Link
                     to="/company-login"
-                    className="text-gray-600 hover:text-blue-600 text-sm"
+                    className="text-gray-600 hover:text-[#820101] text-sm"
                   >
                     Company Portal
                   </Link>
@@ -433,7 +433,7 @@ export default function HomeScreen() {
                 <li>
                   <Link
                     to="/docs"
-                    className="text-gray-600 hover:text-blue-600 text-sm"
+                    className="text-gray-600 hover:text-[#820101] text-sm"
                   >
                     User Guide
                   </Link>
@@ -441,7 +441,7 @@ export default function HomeScreen() {
                 <li>
                   <Link
                     to="/support"
-                    className="text-gray-600 hover:text-blue-600 text-sm"
+                    className="text-gray-600 hover:text-[#820101] text-sm"
                   >
                     List of Auditors
                   </Link>
@@ -449,7 +449,7 @@ export default function HomeScreen() {
                 <li>
                   <Link
                     to="/api"
-                    className="text-gray-600 hover:text-blue-600 text-sm"
+                    className="text-gray-600 hover:text-[#820101] text-sm"
                   >
                     Support
                   </Link>
@@ -465,7 +465,7 @@ export default function HomeScreen() {
                 <li>
                   <Link
                     to="/privacy"
-                    className="text-gray-600 hover:text-blue-600 text-sm"
+                    className="text-gray-600 hover:text-[#820101] text-sm"
                   >
                     Privacy Policy
                   </Link>
@@ -473,7 +473,7 @@ export default function HomeScreen() {
                 <li>
                   <Link
                     to="/terms"
-                    className="text-gray-600 hover:text-blue-600 text-sm"
+                    className="text-gray-600 hover:text-[#820101] text-sm"
                   >
                     Terms of Service
                   </Link>
@@ -484,7 +484,7 @@ export default function HomeScreen() {
 
           <div className="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-600 text-sm">
-              © 2023 Ghana ORC & ICAG. All rights reserved.
+              © ICAG. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="#" className="text-gray-400 hover:text-gray-500">

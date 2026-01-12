@@ -19,7 +19,7 @@ const LicenseRenewalNotificationScreen = () => {
 
           {/* Greeting & Intro Text */}
           <div className="mb-8">
-            <p className="text-lg font-medium text-gray-800 mb-3">Dear [Auditor's Full Name],</p>
+            <p className="text-lg font-medium text-gray-800 mb-3">Dear Mintah Jr,</p>
             <p className="text-gray-600 leading-relaxed">
               This is an official notification from the Office of the Registrar of Companies (ORC) and the Institute of Chartered Accountants, Ghana (ICAG) regarding your auditor license. Your license is approaching its expiry date and requires renewal to ensure uninterrupted practice as a certified auditor in Ghana.
             </p>

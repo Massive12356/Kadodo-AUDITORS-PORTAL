@@ -18,7 +18,7 @@ import LicenseLapseAlertScreen from "./screens/LicenseLapseAlertScreen"; // Adde
 import CompanyLoginScreen from "./screens/CompanyLoginScreen";
 import IcagLoginScreen from "./screens/IcagLoginScreen";
 import CompanyDashboardScreen from "./screens/CompanyDashboardScreen";
-import IcagDashboardScreen from "./screens/IcagDashboardScreen";
+import IcagExecutiveDashboardScreen from "./screens/IcagExecutiveDashboardScreen";
 import AuditorSearchScreen from "./screens/AuditorSearchScreen";
 import AuditorProfileScreen from "./screens/AuditorProfileScreen";
 import RequestAuditorEngagementScreen from "./screens/RequestAuditorEngagementScreen";
@@ -26,6 +26,8 @@ import AuditorManagementScreen from "./screens/AuditorManagementScreen";
 import VerifyConsentLetterScreen from "./screens/VerifyConsentLetterScreen";
 import HelpCenterScreen from './screens/HelpCenterScreen';
 import ReviewAuditorScreen from './screens/ReviewAuditorScreen';
+import AuditorManagementDirectoryScreen from './screens/AuditorManagementDirectoryScreen';
+import CompanyOversightModuleScreen from './screens/CompanyOversightModuleScreen';
 import Layout from "./components/Layout";
 import CompanyLayout from "./components/CompanyLayout";
 import IcagLayout from "./components/IcagLayout";
@@ -82,7 +84,9 @@ function App() {
         
         {/* ICAG Portal Routes */}
         <Route path="/icag-login" element={<IcagLoginScreen />} />
-        <Route path="/icag-dashboard" element={<IcagProtectedRoute><IcagLayout><IcagDashboardScreen /></IcagLayout></IcagProtectedRoute>} />
+        <Route path="/icag-dashboard" element={<IcagProtectedRoute><IcagLayout><IcagExecutiveDashboardScreen /></IcagLayout></IcagProtectedRoute>} />
+        <Route path="/manage-auditors" element={<IcagProtectedRoute><IcagLayout><AuditorManagementDirectoryScreen /></IcagLayout></IcagProtectedRoute>} />
+        <Route path="/manage-companies" element={<IcagProtectedRoute><IcagLayout><CompanyOversightModuleScreen /></IcagLayout></IcagProtectedRoute>} />
       </Routes>
       <Toaster position="top-right" />
     </>

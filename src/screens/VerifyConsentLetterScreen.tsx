@@ -87,8 +87,8 @@ export default function VerifyConsentLetterScreen() {
       <div className="max-w-4xl mx-auto mt-8">
         {/* Top Badge */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium animate-bounce">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#f8e6e6] text-[#820101] text-sm font-medium animate-bounce">
+            <div className="w-2 h-2 bg-[#820101] rounded-full mr-2"></div>
             OFFICIAL VERIFICATION PORTAL
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function VerifyConsentLetterScreen() {
         {/* Verification Card */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Blue Accent Bar */}
-          <div className="h-1 bg-blue-600"></div>
+          <div className="h-1 bg-[#820101]"></div>
           
           <div className="p-6 sm:p-8">
             {/* Input Section */}
@@ -123,7 +123,7 @@ export default function VerifyConsentLetterScreen() {
                   value={consentCode}
                   onChange={handleInputChange}
                   placeholder="CNST-XXXXXX"
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-[#820101] focus:border-[#820101]"
                   maxLength={11}
                 />
               </div>
@@ -139,8 +139,8 @@ export default function VerifyConsentLetterScreen() {
               disabled={verificationStatus === 'verifying'}
               className={`w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white ${
                 verificationStatus === 'verifying' 
-                  ? 'bg-blue-400 cursor-not-allowed' 
-                  : 'bg-blue-600 hover:bg-blue-700'
+                  ? 'bg-[#a64444] cursor-not-allowed' 
+                  : 'bg-[#820101] hover:bg-[#6a0101]'
               }`}
             >
               {verificationStatus === 'verifying' ? (
@@ -189,8 +189,8 @@ export default function VerifyConsentLetterScreen() {
 
               {verificationStatus === 'verifying' && (
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                    <Clock className="h-8 w-8 text-blue-600" />
+                  <div className="w-16 h-16 rounded-full bg-[#f8e6e6] flex items-center justify-center mb-4">
+                    <Clock className="h-8 w-8 text-[#820101]" />
                   </div>
                   <h3 className="text-lg font-medium text-gray-900 mb-1">Verifying...</h3>
                   <p className="text-gray-500 max-w-md">
@@ -210,24 +210,24 @@ export default function VerifyConsentLetterScreen() {
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="font-bold text-gray-900">Consent Letter Details</h4>
-                        <p className="text-sm text-gray-500">Verification Code: {consentCode}</p>
+                        <p className="text-sm text-gray-500">Verification Code: <span className="font-medium text-black">{consentCode}</span></p>
                       </div>
                       <div className="text-right">
                         <p className="text-sm text-gray-500">Verified on</p>
-                        <p className="text-sm font-medium">{mockConsentLetter.verificationDate}</p>
+                        <p className="text-sm font-medium"><span className="font-medium text-black">{mockConsentLetter.verificationDate}</span></p>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                       <div>
-                        <p className="text-gray-600"><span className="font-medium">Company:</span> {mockConsentLetter.company.name}</p>
-                        <p className="text-gray-600"><span className="font-medium">Registration:</span> {mockConsentLetter.company.registration}</p>
-                        <p className="text-gray-600"><span className="font-medium">Auditor:</span> {mockConsentLetter.auditor.name}</p>
+                        <p className="text-gray-600"><span className="font-medium">Company:</span> <span className="font-medium text-black">{mockConsentLetter.company.name}</span></p>
+                        <p className="text-gray-600"><span className="font-medium">Registration:</span> <span className="font-medium text-black">{mockConsentLetter.company.registration}</span></p>
+                        <p className="text-gray-600"><span className="font-medium">Auditor:</span> <span className="font-medium text-black">{mockConsentLetter.auditor.name}</span></p>
                       </div>
                       <div>
                         <p className="text-gray-600"><span className="font-medium">Status:</span> <span className="text-green-600 font-medium">Valid</span></p>
-                        <p className="text-gray-600"><span className="font-medium">Issued by:</span> {mockConsentLetter.issuer}</p>
-                        <p className="text-gray-600"><span className="font-medium">Category:</span> {mockConsentLetter.auditor.category}</p>
+                        <p className="text-gray-600"><span className="font-medium">Issued by:</span> <span className="font-medium text-black">{mockConsentLetter.issuer}</span></p>
+                        <p className="text-gray-600"><span className="font-medium">Category:</span> <span className="font-medium text-black">{mockConsentLetter.auditor.category}</span></p>
                       </div>
                     </div>
                   </div>
@@ -259,7 +259,7 @@ export default function VerifyConsentLetterScreen() {
                   </div>
                   
                   {showDetails && (
-                    <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <div className="mt-6 bg-[#f8e6e6] border border-[#d6baba] rounded-lg p-6">
                       <h4 className="font-bold text-gray-900 mb-4 text-center">Consent Letter Content</h4>
                       
                       <div className="bg-white rounded-lg shadow-lg p-6 sm:p-12 mb-8">

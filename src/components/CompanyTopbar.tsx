@@ -111,7 +111,7 @@ const CompanyTopbar = () => {
                 />
               </div>
               <div className="hidden md:block text-left">
-                <p className="text-sm font-medium text-gray-900">Company Admin</p>
+                <p className="text-sm font-medium text-gray-900">Kwame Mintah</p>
                 <p className="text-xs text-gray-500">company@example.com</p>
               </div>
               <ChevronDown className="h-4 w-4 text-gray-500 hidden md:block" />

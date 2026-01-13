@@ -53,7 +53,7 @@ const CompanyOversightModuleScreen: React.FC = () => {
       auditor: "Kwame Mensah",
       firm: "Mensah & Associates",
       license: "ICAG-2023-001",
-      rotationCycle: { current: 3, total: 5, status: "on track" },
+      rotationCycle: { current: 3, total: 6, status: "on track" },
       status: "Active",
       statusIcon: "check"
     },
@@ -64,7 +64,7 @@ const CompanyOversightModuleScreen: React.FC = () => {
       auditor: "Adjoa Asante",
       firm: "Asante & Partners",
       license: "ICAG-2023-002",
-      rotationCycle: { current: 1, total: 5, status: "on track" },
+      rotationCycle: { current: 1, total: 6, status: "on track" },
       status: "Active",
       statusIcon: "check"
     },
@@ -75,7 +75,7 @@ const CompanyOversightModuleScreen: React.FC = () => {
       auditor: "Yaw Boakye",
       firm: "Boakye Consulting",
       license: "ICAG-2023-003",
-      rotationCycle: { current: 5, total: 5, status: "overdue" },
+      rotationCycle: { current: 5, total: 6, status: "overdue" },
       status: "Expired",
       statusIcon: "alert"
     },
@@ -86,7 +86,7 @@ const CompanyOversightModuleScreen: React.FC = () => {
       auditor: "Akosua Owusu",
       firm: "Owusu & Co.",
       license: "ICAG-2023-004",
-      rotationCycle: { current: 4, total: 5, status: "due soon" },
+      rotationCycle: { current: 4, total: 6, status: "due soon" },
       status: "Active",
       statusIcon: "warning"
     },
@@ -97,7 +97,7 @@ const CompanyOversightModuleScreen: React.FC = () => {
       auditor: "Kofi Adu",
       firm: "Adu & Associates",
       license: "ICAG-2023-005",
-      rotationCycle: { current: 2, total: 5, status: "on track" },
+      rotationCycle: { current: 2, total: 6, status: "on track" },
       status: "Active",
       statusIcon: "check"
     }

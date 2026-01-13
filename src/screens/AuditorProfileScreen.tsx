@@ -196,7 +196,7 @@ export default function AuditorProfileScreen() {
                   <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                     <div className="flex items-center">
                       <Briefcase className="h-8 w-8 text-blue-500 mr-3" />
-                      <h3 className="text-lg font-semibold text-gray-900">ORC License</h3>
+                      <h3 className="text-lg font-semibold text-gray-900">ORC Crenentials</h3>
                     </div>
                     <div className="mt-4 space-y-3">
                       <div className="flex justify-between">
@@ -204,7 +204,7 @@ export default function AuditorProfileScreen() {
                         <span className="font-medium text-green-600">{auditor.orcLicense.status}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">License No</span>
+                        <span className="text-gray-600">Registration No</span>
                         <span className="font-medium">{auditor.orcLicense.licenseNumber}</span>
                       </div>
                       <div className="flex justify-between">

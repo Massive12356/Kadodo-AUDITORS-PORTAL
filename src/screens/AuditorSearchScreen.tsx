@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { Search, MapPin, Briefcase, Star, BadgeCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CompanyLayout from '../components/CompanyLayout';
+import w1 from '../assets/w1.jpg'
+import w2 from '../assets/w2.jpg'
+import w3 from '../assets/w3.jpg'
+import img1 from '../assets/img3.jpg'
+import img2 from '../assets/img2.jpg'
+import img3 from '../assets/img4.jpg'
 
 export default function AuditorSearchScreen() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,7 +31,7 @@ export default function AuditorSearchScreen() {
       specializations: ['Tax Audit', 'Forensic Accounting'],
       status: 'Active',
       categorization: 'A1',
-      profilePhoto: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
+      profilePhoto: img1
     },
     {
       id: 2,
@@ -38,7 +44,7 @@ export default function AuditorSearchScreen() {
       specializations: ['Small Business', 'Risk Advisory'],
       status: 'Active',
       categorization: 'B1',
-      profilePhoto: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
+      profilePhoto: w1
     },
     {
       id: 3,
@@ -51,7 +57,7 @@ export default function AuditorSearchScreen() {
       specializations: ['Tax Audit', 'Consulting'],
       status: 'Active',
       categorization: 'A',
-      profilePhoto: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
+      profilePhoto: img2
     },
     {
       id: 4,
@@ -64,7 +70,7 @@ export default function AuditorSearchScreen() {
       specializations: ['Forensic Accounting', 'Risk Advisory'],
       status: 'Active',
       categorization: 'C',
-      profilePhoto: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
+      profilePhoto: w3
     },
     {
       id: 5,
@@ -77,7 +83,7 @@ export default function AuditorSearchScreen() {
       specializations: ['Small Business', 'Tax Audit'],
       status: 'Active',
       categorization: 'D',
-      profilePhoto: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
+      profilePhoto: img3
     },
     {
       id: 6,
@@ -90,7 +96,7 @@ export default function AuditorSearchScreen() {
       specializations: ['Consulting', 'Risk Advisory'],
       status: 'Active',
       categorization: 'A',
-      profilePhoto: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
+      profilePhoto: w2
     }
   ];
 

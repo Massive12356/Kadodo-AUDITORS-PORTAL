@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { User, Building2, Clipboard, Upload, Info, AlertTriangle, HelpCircle } from 'lucide-react';
-import CompanyLayout from '../components/CompanyLayout';
+import img1 from '../assets/img3.jpg';
 
 export default function RequestAuditorEngagementScreen() {
   const [message, setMessage] = useState('');
@@ -40,7 +40,7 @@ export default function RequestAuditorEngagementScreen() {
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
                     <img 
-                      src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" 
+                      src={img1} 
                       alt="Auditor profile" 
                       className="w-full h-full rounded-full object-cover"
                     />
@@ -48,7 +48,7 @@ export default function RequestAuditorEngagementScreen() {
                   
                   <div className="ml-4 flex-1">
                     <div className="flex items-center">
-                      <h3 className="font-medium text-gray-900">John Doe, CPA</h3>
+                      <h3 className="font-medium text-gray-900">Kwame Mensah, CPA</h3>
                       <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                         <svg className="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />

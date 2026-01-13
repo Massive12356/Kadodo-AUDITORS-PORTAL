@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { UserPlus, Users, Clock, AlertTriangle, Search, Filter, ChevronLeft, ChevronRight, BadgeCheck, CircleDashed, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Eye, Star } from 'lucide-react';
-import CompanyLayout from '../components/CompanyLayout';
+import w1 from '../assets/w1.jpg'
+import w2 from '../assets/w2.jpg'
+import w3 from '../assets/w3.jpg'
+import img1 from '../assets/img3.jpg'
+import img2 from '../assets/img2.jpg'
+import img3 from '../assets/img4.jpg'
 
 export default function AuditorManagementScreen() {
   const [activeTab, setActiveTab] = useState('active');
@@ -39,7 +44,7 @@ export default function AuditorManagementScreen() {
       license: 'ICAG-2023-001',
       engagementDate: '2023-10-15',
       status: 'active',
-      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+      avatar: img1,
       category: 'A1'
     },
     {
@@ -49,7 +54,7 @@ export default function AuditorManagementScreen() {
       license: 'ICAG-2023-002',
       engagementDate: '2023-11-20',
       status: 'pending',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+      avatar: w1,
       category: 'B1'
     },
     {
@@ -59,7 +64,7 @@ export default function AuditorManagementScreen() {
       license: 'ICAG-2023-003',
       engagementDate: '2023-12-05',
       status: 'action-required',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+      avatar: img2,
       category: 'C'
     },
     {
@@ -69,7 +74,7 @@ export default function AuditorManagementScreen() {
       license: 'ICAG-2023-004',
       engagementDate: '2023-09-10',
       status: 'active',
-      avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+      avatar: w2,
       category: 'A'
     },
     {
@@ -79,7 +84,7 @@ export default function AuditorManagementScreen() {
       license: 'ICAG-2023-005',
       engagementDate: '2023-12-18',
       status: 'pending',
-      avatar: 'https://randomuser.me/api/portraits/men/55.jpg',
+      avatar: img3,
       category: 'D'
     },
     {
@@ -89,7 +94,7 @@ export default function AuditorManagementScreen() {
       license: 'ICAG-2023-006',
       engagementDate: '2023-08-22',
       status: 'active',
-      avatar: 'https://randomuser.me/api/portraits/women/72.jpg',
+      avatar: w3,
       category: 'A1'
     },
     {
@@ -99,7 +104,7 @@ export default function AuditorManagementScreen() {
       license: 'ICAG-2023-007',
       engagementDate: '2023-11-05',
       status: 'action-required',
-      avatar: 'https://randomuser.me/api/portraits/men/41.jpg',
+      avatar: img2,
       category: 'B'
     }
   ];

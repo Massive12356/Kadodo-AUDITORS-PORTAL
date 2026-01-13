@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import CompanyLayout from '../components/CompanyLayout';
 import { Link } from 'react-router-dom';
+import img1 from '../assets/img3.jpg'
 
 export default function AuditorProfileScreen() {
   const { id } = useParams<{ id: string }>();
@@ -27,7 +28,7 @@ export default function AuditorProfileScreen() {
     name: 'Kwame Mensah',
     title: 'Managing Partner',
     firm: 'Mensah & Associates',
-    photo: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+    photo: img1,
     icagNumber: 'ICAG-2023-001',
     orcNumber: 'ORC-AUD-98765',
     status: 'Active & Compliant',
